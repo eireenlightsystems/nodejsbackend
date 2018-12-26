@@ -1,0 +1,114 @@
+<div class="filter">
+  <div class="fr">
+
+    <!--<div class="col order">-->
+      <!--<div class="input-field inline order-position-input">-->
+        <!--<input type="number" id="number" min="1" [(ngModel)]="id_geograph">-->
+        <!--<label for="number">Геогр. понятие</label>-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <div class="col order">
+      <div class="input-field inline order-position-input">
+        <select  id="fixture-geograph-input" class="form-control" name="geograph" [(ngModel)]="id_geograph">
+          <option value="-1" selected>Все</option>
+          <option *ngFor="let geograph of geographs" value="{{geograph.id_geograph}}">
+            {{geograph.name_geograph}}
+          </option>
+        </select>
+        <label for="number" *ngIf="!id_geograph">Геогр. понятие</label>
+      </div>
+    </div>
+
+    <!--<div class="col order">-->
+      <!--<div class="input-field inline order-position-input">-->
+        <!--<input type="number" id="number" min="1">-->
+        <!--<label for="number">Владелец</label>-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <div class="col order">
+      <div class="input-field inline order-position-input">
+        <select  id="fixture-owner-input" class="form-control" name="owner" [(ngModel)]="id_owner">
+          <option value="-1" selected>Все</option>
+          <option *ngFor="let owner of owners" value="{{owner.id_owner}}">
+            {{owner.name_owner}}
+          </option>
+        </select>
+        <label for="number" *ngIf="!id_owner">Владелец</label>
+      </div>
+    </div>
+
+    <!--<div class="col order">-->
+      <!--<div class="input-field inline order-position-input">-->
+        <!--<input type="number" id="number" min="1">-->
+        <!--<label for="number">Тип</label>-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <div class="col order">
+      <div class="input-field inline order-position-input">
+        <select  id="fixture-fixture_type-input" class="form-control" name="fixture_type" [(ngModel)]="id_fixture_type">
+          <option value="-1" selected>Все</option>
+          <option *ngFor="let fixture_type of fixture_types" value="{{fixture_type.id_fixture_type}}">
+            {{fixture_type.name_fixture_type}}
+          </option>
+        </select>
+        <label for="number" *ngIf="!id_fixture_type">Тип</label>
+      </div>
+    </div>
+
+    <!--<div class="col order">-->
+      <!--<div class="input-field inline order-position-input">-->
+        <!--<input type="number" id="number" min="1">-->
+        <!--<label for="number">Подстанция</label>-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <div class="col order">
+      <div class="input-field inline order-position-input">
+        <select  id="fixture-substation-input" class="form-control" name="substation" [(ngModel)]="id_substation">
+          <option value="-1" selected>Все</option>
+          <option *ngFor="let substation of substations" value="{{substation.id_substation}}">
+            {{substation.name_substation}}
+          </option>
+        </select>
+        <label for="number" *ngIf="!id_substation">Подстанция</label>
+      </div>
+    </div>
+
+    <!--<div class="col order">-->
+      <!--<div class="input-field inline order-position-input">-->
+        <!--<input type="number" id="number" min="1">-->
+        <!--<label for="number">Режим</label>-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <div class="col order">
+      <div class="input-field inline order-position-input">
+        <!--<select id="fixture-mode-input" name="id_mode" [(ngModel)]="id_mode">-->
+          <!--<option value="-1" selected>Режим</option>-->
+          <!--<option value="1">Включено</option>-->
+          <!--<option value="0">Выключено</option>-->
+        <!--</select>-->
+
+
+        <select  id="fixture-mode-input" class="form-control" name="mode" [(ngModel)]="id_mode">
+          <option value="-1" selected>Все</option>
+          <option *ngFor="let mode of modes" value="{{mode.id_mode}}">
+            {{mode.name_mode}}
+          </option>
+        </select>
+        <label for="number" *ngIf="!id_mode">Режим</label>
+      </div>
+    </div>
+
+  </div>
+
+  <button
+    class="btn waves-effect wavers-light btn-small"
+    (click)="submitFilter()"
+    [disabled]="!isValid"
+  >Применить фильтр
+  </button>
+</div>

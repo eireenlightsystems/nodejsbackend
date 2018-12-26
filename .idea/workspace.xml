@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4b9fcdae-074c-4c3b-ba19-5e7f7c797ca7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/angular.json" afterDir="false" />
-    </list>
+    <list default="true" id="4b9fcdae-074c-4c3b-ba19-5e7f7c797ca7" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -227,7 +225,7 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
-    <property name="ts.external.directory.path" value="C:\Users\lex\WebstormProjects\light_server\client\node_modules\typescript\lib" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2018.2.5\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -261,16 +259,15 @@
       <workItem from="1545285029210" duration="12327000" />
       <workItem from="1545387312661" duration="599000" />
       <workItem from="1545401353457" duration="16000000" />
-      <workItem from="1545576399131" duration="21859000" />
+      <workItem from="1545576399131" duration="22112000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103822000" />
+    <option name="totallyTimeSpent" value="104075000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11116965" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
