@@ -22,7 +22,7 @@ module.exports.getAll = async function (req, res) {
             isDefault(+req.query.limit)
         ];
 
-        await client.query('select f.id_fixture, f.price, f.dateedit, f.useredit from fixture_pkg_i.fixture_vwf($1, $2, $3, $4, $5) f' +
+        await client.query('select * from fixture_pkg_i.fixture_vwf($1, $2, $3, $4, $5) f' +
             ' OFFSET $6 LIMIT $7', params, function (err, result) {
             if (err) {
                 console.log(err);
@@ -34,7 +34,7 @@ module.exports.getAll = async function (req, res) {
         });
     } else {
         console.log(`Fixture.getAll: The user with the token (${req.headers.authorization}) has already logouted from the database.`);
-        res.json({message: `Fixture.getAll: The user with the token (${req.headers.authorization}) has already logouted from the database.`});
+        res.json({message: `Fixture.getAll: The user has already logouted from the database.`});
     }
 }
 

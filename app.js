@@ -4,6 +4,7 @@ const passport = require('passport')
 const bodyParser = require('body-parser')
 const authRoutes = require('./routes/auth')
 const fixtureRoutes = require('./routes/fixture')
+const geographRoutes = require('./routes/geograph')
 
 const keys = require('./config/keys')
 const app = express()
@@ -19,17 +20,18 @@ app.use(bodyParser.json())
 
 app.use('/api/auth', authRoutes)
 app.use('/api/fixture', fixtureRoutes)
+app.use('/api/geograph', geographRoutes)
 
-if(process.env.NODE_ENV === 'production'){
-    app.use(express.static('../client/dist/client'))
-
-    app.get('*', (req, res) => {
-        res.sendFile(
-            path.resolve(
-                __dirname, 'client', 'dist', 'client', 'index.html'
-            )
-        )
-    })
-}
+// if(process.env.NODE_ENV === 'production'){
+//     app.use(express.static('../light_client/dist/client'))
+//
+//     app.get('*', (req, res) => {
+//         res.sendFile(
+//             path.resolve(
+//                 __dirname, 'light_client', 'dist', 'client', 'index.html'
+//             )
+//         )
+//     })
+// }
 
 module.exports = app
