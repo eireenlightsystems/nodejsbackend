@@ -1,4 +1,4 @@
-    node_modules
-          config/keys.dev.js
-          client/etc
-    sshkeys
+node_modules/*
+config/keys.dev.js
+sshkeys/*
+.idea/*
