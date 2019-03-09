@@ -169,3 +169,63 @@ module.exports.del = function (req, res) {
         errorHandler(res, e)
     }
 }
+
+module.exports.ins_gateway_node = function (req, res) {
+    try {
+        var client = auth.sessionConnection[req.headers.authorization];
+        if (client) {
+            var gatewayNode = req.body;
+            var params = [
+                gatewayNode.gatewayId,
+                gatewayNode.nodeId,
+                gatewayNode.numNode];
+
+            client.query('select node_pkg_i.ins_gateway_node($1, $2, $3)', params, function (err, result) {
+                if (err) {
+                    console.log(err);
+                    res.status(500).send({message: err.message});
+                    return;
+                }
+                ;
+                res.status(201).json({
+                    id_gateway_node: result.rows[0].save
+                });
+            });
+        } else {
+            console.log(`Gateway_node.create: The user with the token (${req.headers.authorization}) has already logouted from the database.`);
+            res.json({message: `Gateway_node.create: The user has already logouted from the database.`});
+        }
+    } catch (e) {
+        errorHandler(res, e)
+    }
+}
+
+module.exports.del_gateway_node = async function (req, res) {
+    try {
+        var client = auth.sessionConnection[req.headers.authorization];
+        if (client) {
+            var gatewayNode = req.body;
+            var params = [
+                gatewayNode.gatewayId,
+                gatewayNode.nodeId];
+
+            await client.query('select node_pkg_i.del_gateway_node($1, $2)', params, function (err, result) {
+                if (err) {
+                    console.log(err);
+                    res.status(500).send({error: err.message});
+                    return;
+                }
+                ;
+
+                res.status(201).json({
+                    message: 'Позиция была удалена.'
+                })
+            });
+        } else {
+            console.log(`Node.Del_gateway_node: The user with the token (${req.headers.authorization}) has already logouted from the database.`);
+            res.json({message: `Node.Del_gateway_node: The user has already logouted from the database.`});
+        }
+    } catch (e) {
+        errorHandler(res, e)
+    }
+}

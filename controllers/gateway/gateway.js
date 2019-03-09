@@ -43,6 +43,47 @@ module.exports.getById = function (req, res) {
 
 }
 
+module.exports.getGatewayGroups = async function (req, res) {
+
+    console.log(req)
+
+    var client = auth.sessionConnection[req.headers.authorization];
+    if (client) {
+        var params = [req.params.id];
+        await client.query('select * from gateway_pkg_i.gateway_gr_vw where $1 = $1',params, function (err, result) {
+            if (err) {
+                console.log(err);
+                res.status(500).send({message: err.message});
+                return;
+            }
+            ;
+            res.status(200).json(result.rows);
+        });
+    } else {
+        console.log(`Gateway.getGroup: The user with the token (${req.headers.authorization}) has already logouted from the database.`);
+        res.json({message: `Gateway.getGroup: The user has already logouted from the database.`});
+    }
+}
+
+module.exports.getNodesInGroup = async function (req, res) {
+    var client = auth.sessionConnection[req.headers.authorization];
+    if (client) {
+        var params = [req.params.id];
+        await client.query('select * from gateway_pkg_i.get_node_in_group_vwf($1)', params, function (err, result) {
+            if (err) {
+                console.log(err);
+                res.status(500).send({message: err.message});
+                return;
+            }
+            ;
+            res.status(200).json(result.rows);
+        });
+    } else {
+        console.log(`Gateway.getNodeInGroup: The user with the token (${req.headers.authorization}) has already logouted from the database.`);
+        res.json({message: `Gateway.getNodeInGroup: The user has already logouted from the database.`});
+    }
+}
+
 module.exports.ins = async function (req, res) {
     try {
         var client = auth.sessionConnection[req.headers.authorization];
@@ -113,10 +154,10 @@ module.exports.set_id_node = async function (req, res) {
     try {
         var client = auth.sessionConnection[req.headers.authorization];
         if (client) {
-            var gateway = req.body;
+            var nodeGateway = req.body;
             var params = [
-                gateway.id_gateway,
-                gateway.id_node];
+                nodeGateway.gatewayId,
+                nodeGateway.nodeId];
 
             await client.query('select gateway_pkg_i.set_id_node($1, $2)', params, function (err, result) {
                 if (err) {
@@ -162,3 +203,5 @@ module.exports.del = function (req, res) {
         errorHandler(res, e)
     }
 }
+
+
