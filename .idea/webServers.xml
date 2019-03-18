@@ -10,6 +10,14 @@
           <option name="port" value="21" />
         </fileTransfer>
       </webServer>
+      <webServer id="8c0b8e24-efb6-4788-8c40-959c1bbe486b" name="dev_nodejs_backend" url="http://192.168.0.113">
+        <fileTransfer host="192.168.0.113" port="21" rootFolder="/light/backendNodeJs">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

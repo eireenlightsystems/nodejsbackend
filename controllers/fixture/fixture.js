@@ -40,6 +40,58 @@ module.exports.getAll = async function (req, res) {
     }
 }
 
+module.exports.getFixtureInGroupAll = async function (req, res) {
+    var client = auth.sessionConnection[req.headers.authorization];
+    if (client) {
+
+        var params = [
+            isDefault(+req.query.id_geograph),
+            isDefault(+req.query.id_owner),
+            isDefault(+req.query.id_fixture_type),
+            isDefault(+req.query.id_substation),
+            isDefault(+req.query.id_mode),
+            isDefault(+req.query.id_contract),
+            isDefault(+req.query.id_node),
+            isDefault(+req.query.id_fixture_group),
+            isDefault(+req.query.offset),
+            isDefault(+req.query.limit)
+        ];
+
+        await client.query('select * from fixture_pkg_i.fixture_in_group_vwf($1, $2, $3, $4, $5, $6, $7, $8) f' +
+            ' OFFSET $9 LIMIT $10', params, function (err, result) {
+            if (err) {
+                console.log(err);
+                res.status(500).send({message: err.message});
+                return;
+            }
+            ;
+            res.status(200).json(result.rows);
+        });
+    } else {
+        console.log(`Fixture.getFixtureInGroupAll: The user with the token (${req.headers.authorization}) has already logouted from the database.`);
+        res.json({message: `Fixture.getFixtureInGroupAll: The user has already logouted from the database.`});
+    }
+}
+
+module.exports.getFixtureNotInThisGroup = async function (req, res) {
+    var client = auth.sessionConnection[req.headers.authorization];
+    if (client) {
+        var params = [+req.query.fixtureGroupId];
+        await client.query('select * from fixture_pkg_i.fixture_not_in_this_group_vwf($1)', params, function (err, result) {
+            if (err) {
+                console.log(err);
+                res.status(500).send({message: err.message});
+                return;
+            }
+            ;
+            res.status(200).json(result.rows);
+        });
+    } else {
+        console.log(`Fixture.getFixtureNotInThisGroup: The user with the token (${req.headers.authorization}) has already logouted from the database.`);
+        res.json({message: `Fixture.getFixtureNotInThisGroup: The user has already logouted from the database.`});
+    }
+}
+
 module.exports.getById = function (req, res) {
 
 }

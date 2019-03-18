@@ -8,6 +8,7 @@ const authRoutes = require('./routes/auth')
 
 //Fixture
 const fixtureRoutes = require('./routes/fixture/fixture')
+const fixtureGroupRoutes = require('./routes/fixture/fixtureGroup')
 const owner_fixtureRoutes = require('./routes/fixture/owner')
 const fixtureTypeRoutes = require('./routes/fixture/fixtureType')
 const substationRoutes = require('./routes/fixture/substation')
@@ -26,6 +27,12 @@ const gatewayRoutes = require('./routes/gateway/gateway')
 const gatewayTypeRoutes = require('./routes/gateway/gatewayType')
 const owner_gatewayRoutes = require('./routes/gateway/owner')
 const contract_gatewayRoutes = require('./routes/gateway/contract')
+
+//Sensor
+const sensorRoutes = require('./routes/sensor/sensor')
+const sensorTypeRoutes = require('./routes/sensor/sensorType')
+const owner_sensorRoutes = require('./routes/sensor/owner')
+const contract_sensorRoutes = require('./routes/sensor/contract')
 
 //Geograph
 const geographRoutes = require('./routes/geograph/geograph')
@@ -53,6 +60,7 @@ app.use('/api/auth', authRoutes)
 
 //Fixture
 app.use('/api/fixture', fixtureRoutes)
+app.use('/api/fixtureGroup', fixtureGroupRoutes)
 app.use('/api/owner_fixture', owner_fixtureRoutes)
 app.use('/api/fixtureType', fixtureTypeRoutes)
 app.use('/api/substation', substationRoutes)
@@ -71,6 +79,12 @@ app.use('/api/gateway', gatewayRoutes)
 app.use('/api/gatewayType', gatewayTypeRoutes)
 app.use('/api/owner_gateway', owner_gatewayRoutes)
 app.use('/api/contract_gateway', contract_gatewayRoutes)
+
+//Sensor
+app.use('/api/sensor', sensorRoutes)
+app.use('/api/sensor-type', sensorTypeRoutes)
+app.use('/api/owner-sensor', owner_sensorRoutes)
+app.use('/api/contract-sensor', contract_sensorRoutes)
 
 //Geograph
 app.use('/api/geograph', geographRoutes)

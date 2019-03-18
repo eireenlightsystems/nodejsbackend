@@ -2,6 +2,13 @@
 <project version="4">
   <component name="PublishConfigData" serverName="main_nodejs_backend">
     <serverData>
+      <paths name="dev_nodejs_backend">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="main_nodejs_backend">
         <serverdata>
           <mappings>

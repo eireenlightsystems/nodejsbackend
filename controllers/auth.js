@@ -13,8 +13,8 @@ module.exports.login = async function (req, res) {
     if (!client) {
         //Подключение к БД
         var userId;
-        // var connectionString = "postgres://" + req.body.login + ":" + req.body.password + "@31.134.167.47:5432/light";
-        var connectionString = "postgres://" + req.body.login + ":" + req.body.password + "@31.134.167.47:5433/light_db";
+        // var connectionString = "postgres://" + req.body.login + ":" + req.body.password + "@31.134.167.47:5433/light_db";
+        var connectionString = "postgres://" + req.body.login + ":" + req.body.password + "@31.134.167.47:5433/light_db_dev";
         client = new pg.Client(connectionString);
 
         client.connect(function (err) {
